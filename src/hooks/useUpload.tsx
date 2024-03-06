@@ -26,7 +26,7 @@ export default function useUpload() {
 
     xhr.open(
       "POST",
-      `http://localhost:3003/convert?fileName=${state.file?.name}&resolution=${resolution}&format=${format}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/convert?fileName=${state.file?.name}&resolution=${resolution}&format=${format}`,
       true
     );
 

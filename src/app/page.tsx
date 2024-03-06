@@ -3,17 +3,6 @@ import React from "react";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import VideoConverterCard from "@/components/converters/video/VideoConverter";
-import {
-  IconArrowWaveRightUp,
-  IconBoxAlignRightFilled,
-  IconBoxAlignTopLeft,
-  IconClipboardCopy,
-  IconFileBroken,
-  IconSignature,
-  IconTableColumn,
-} from "@tabler/icons-react";
-import { BentoGrid, BentoGridItem } from "@/components/ui/bonto-grid";
 
 export default function Home() {
   return (
