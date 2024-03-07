@@ -1,3 +1,5 @@
+"use client";
+
 import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
 import { ReactNode } from "react";
@@ -6,6 +8,7 @@ import { ThemeProvider } from "@/components/providers/theme.provider";
 import { Navbar } from "@/components/ui/navbar";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { TerminalContextProvider } from "react-terminal";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -18,16 +21,18 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           GeistMono.className
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
+        <TerminalContextProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Navbar />
 
-          {children}
-        </ThemeProvider>
+            {children}
+          </ThemeProvider>
+        </TerminalContextProvider>
       </body>
     </html>
   );

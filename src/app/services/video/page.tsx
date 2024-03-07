@@ -15,7 +15,9 @@ export default function Page() {
   const [terminalLineData, setTerminalLineData] = useState<string[]>([]);
 
   useEffect(() => {
-    const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL as string);
+    const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL as string, {
+      secure: process.env.NODE_ENV === "production",
+    });
 
     socket.on("conversion-event", (message: string) => {
       setTerminalLineData((state) => [...state, message]);
