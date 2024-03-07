@@ -4,24 +4,8 @@ import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers/theme.provider";
 import { Navbar } from "@/components/ui/navbar";
-import { IconBoxAlignTopLeft } from "@tabler/icons-react";
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-
-const navItems: {
-  name: string;
-  link: string;
-  icon?: JSX.Element;
-}[] = [
-  {
-    icon: <IconBoxAlignTopLeft />,
-    link: "/",
-    name: "Home",
-  },
-];
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -29,8 +13,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head />
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
+          "min-h-screen bg-background antialiased",
+          GeistSans.className,
+          GeistMono.className
         )}
       >
         <ThemeProvider
