@@ -63,7 +63,7 @@ export default function VideoConverterCard() {
           {
             <div
               className={
-                "border hover:bg-gray-900 cursor-pointer border-dotted flex flex-col items-center align-middle justify-center border-gray-700 w-full h-[200px] rounded-md"
+                "border hover:bg-gray-900 cursor-pointer border-dotted flex flex-col items-center align-middle justify-center border-gray-700 w-full h-[208px] rounded-md"
               }
             >
               <FaCloudUploadAlt size={50} />

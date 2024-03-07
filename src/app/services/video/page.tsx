@@ -4,6 +4,7 @@ import VideoConverterCard from "@/components/converters/video/VideoConverter";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 import Terminal, { ColorMode, TerminalOutput } from "react-terminal-ui";
+import TerminalUI from "@/components/Terminal";
 
 const scrollToBottomOfContainer = () => {
   const terminalContainer = document.querySelector(".react-terminal");
@@ -31,23 +32,10 @@ export default function Page() {
   }, []);
 
   return (
-    <main className="w-full min-h-screen flex  justify-center align-middle items-center">
+    <main className="w-full py-20 min-h-screen flex flex-col space-y-4  justify-center align-middle items-center">
       <VideoConverterCard />
 
-      <div className={"w-[600px] text-sm"}>
-        <Terminal
-          height={"400px"}
-          name="Convertion output"
-          colorMode={ColorMode.Dark}
-          onInput={(terminalInput) =>
-            console.log(`New terminal input received: '${terminalInput}'`)
-          }
-        >
-          {terminalLineData.map((line, index) => (
-            <TerminalOutput key={index}>{line}</TerminalOutput>
-          ))}
-        </Terminal>
-      </div>
+      <TerminalUI lines={terminalLineData} />
     </main>
   );
 }
