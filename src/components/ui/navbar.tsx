@@ -53,39 +53,47 @@ export const Navbar = () => {
   return (
     <div
       className={
-        "w-full flex h-fit px-2 md:px-24 justify-between items-center align-middle top-0 relative border-b border-b-gray-700 bg-background"
+        "w-full flex h-fit  justify-center   top-0 relative border-b border-b-gray-700 bg-background"
       }
     >
-      <div className="flex-row space-x-2  flex h-12">
-        <span
-          className="absolute bottom-0 translate-y-[50%]  z-40 flex overflow-hidden h-[5px] bg-white  transition-all duration-300"
-          style={{ left: tabUnderlineLeft, width: tabUnderlineWidth }}
-        >
-          <span className="h-full w-full bg-gray-200/30" />
-        </span>
-        {allTabs.map((tab, index) => {
-          const isActive = activeTabIndex === index;
+      <div
+        className={
+          "flex max-w-7xl items-center align-middle justify-between w-full"
+        }
+      >
+        <div className="flex-row  relative space-x-2 flex h-12">
+          <span
+            className="absolute bottom-0 translate-y-[50%]  z-40 flex overflow-hidden h-[5px] bg-white  transition-all duration-300"
+            style={{ left: tabUnderlineLeft, width: tabUnderlineWidth }}
+          >
+            <span className="h-full w-full bg-gray-200/30" />
+          </span>
+          <div className={"flex items-center align-middle justify-center"}>
+            {allTabs.map((tab, index) => {
+              const isActive = activeTabIndex === index;
 
-          return (
-            <Link
-              href={tab.path}
-              key={index}
-              ref={(el) => (tabsRef.current[index] = el)}
-              className={`${
-                isActive ? `font-bold` : `hover:text-neutral-300 font-light`
-              } my-auto cursor-pointer select-none rounded-full px-4 text-center text-white`}
-              onClick={() => setActiveTabIndex(index)}
-            >
-              {tab.name}
-            </Link>
-          );
-        })}
+              return (
+                <Link
+                  href={tab.path}
+                  key={index}
+                  ref={(el) => (tabsRef.current[index] = el)}
+                  className={`${
+                    isActive ? `font-bold` : `hover:text-neutral-300 font-light`
+                  } my-auto cursor-pointer select-none rounded-full px-4 text-center text-white`}
+                  onClick={() => setActiveTabIndex(index)}
+                >
+                  {tab.name}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+        {session.status !== "authenticated" ? (
+          <Link href="/auth/signin">Sign In</Link>
+        ) : (
+          <SignOut />
+        )}
       </div>
-      {session.status !== "authenticated" ? (
-        <Link href="/auth/signin">Sign In</Link>
-      ) : (
-        <SignOut />
-      )}
     </div>
   );
 };
