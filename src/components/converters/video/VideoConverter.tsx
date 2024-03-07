@@ -24,7 +24,7 @@ import {
 import FormGroup from "@/components/ui/Form/FormGroup";
 
 export default function VideoConverterCard() {
-  const { handleUpload, handleFileChange, data, loading, progress } =
+  const { handleUpload, handleFileChange, data, loading, progress, fileName } =
     useUpload();
 
   const onDrop = (acceptedFiles: any) => {
@@ -48,7 +48,7 @@ export default function VideoConverterCard() {
     link.click();
     document.body.removeChild(link);
   };
-
+  console.log(fileName);
   return (
     <Card>
       <CardHeader>
@@ -121,6 +121,7 @@ export default function VideoConverterCard() {
         <Button
           className={"w-full"}
           loading={loading}
+          variant={!fileName ? "ghost" : "default"}
           onClick={() =>
             handleUpload({
               resolution: state.resolution,
@@ -134,6 +135,7 @@ export default function VideoConverterCard() {
 
       {data && (
         <Button
+          disabled={!fileName}
           className={"w-full"}
           variant="link"
           onClick={() => handleDownload()}

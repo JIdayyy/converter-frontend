@@ -3,7 +3,6 @@
 import VideoConverterCard from "@/components/converters/video/VideoConverter";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
-import Terminal, { ColorMode, TerminalOutput } from "react-terminal-ui";
 import TerminalUI from "@/components/Terminal";
 
 const scrollToBottomOfContainer = () => {
@@ -16,8 +15,8 @@ export default function Page() {
   const [terminalLineData, setTerminalLineData] = useState<string[]>([]);
 
   useEffect(() => {
-    console.log("secure", process.env.NODE_ENV === "production");
     const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL as string, {
+      port: 3004,
       secure: process.env.NODE_ENV === "production",
     });
 

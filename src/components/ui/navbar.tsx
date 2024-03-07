@@ -32,6 +32,9 @@ export const Navbar = () => {
 
   useEffect(() => {
     if (activeTabIndex === null) {
+      setActiveTabIndex(
+        allTabs.findIndex((tab) => tab.path === window?.location.pathname)
+      );
       return;
     }
 
