@@ -72,5 +72,6 @@ export default function useUpload() {
     loading: state.loading,
     data: state.data,
     progress: state.progress,
+    url: state.file ? URL.createObjectURL(state.file) : null,
   };
 }
