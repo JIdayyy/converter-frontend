@@ -40,7 +40,6 @@ export default function useUpload() {
     };
 
     xhr.onloadend = (e) => {
-      console.log(e);
       setState((state) => ({
         ...state,
         loading: false,

@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import SignOut from "@/components/ui/signout-button";
+import { useSession } from "next-auth/react";
 
 let allTabs = [
   {
@@ -21,6 +23,7 @@ let allTabs = [
 ];
 
 export const Navbar = () => {
+  const session = useSession();
   const tabsRef = useRef<(HTMLElement | null)[]>([]);
   const [activeTabIndex, setActiveTabIndex] = useState<number | null>(
     typeof window !== "undefined"
@@ -50,10 +53,10 @@ export const Navbar = () => {
   return (
     <div
       className={
-        "w-full flex justify-start items-start h-fit fixed top-0 border-b border-b-gray-700 bg-background"
+        "w-full flex h-fit px-2 md:px-24 justify-between items-center align-middle top-0 relative border-b border-b-gray-700 bg-background"
       }
     >
-      <div className="flex-row px-24 relative space-x-2 max-w-7xl flex h-12">
+      <div className="flex-row space-x-2  flex h-12">
         <span
           className="absolute bottom-0 translate-y-[50%]  z-40 flex overflow-hidden h-[5px] bg-white  transition-all duration-300"
           style={{ left: tabUnderlineLeft, width: tabUnderlineWidth }}
@@ -78,6 +81,11 @@ export const Navbar = () => {
           );
         })}
       </div>
+      {session.status !== "authenticated" ? (
+        <Link href="/auth/signin">Sign In</Link>
+      ) : (
+        <SignOut />
+      )}
     </div>
   );
 };

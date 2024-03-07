@@ -7,7 +7,6 @@ import TerminalUI from "@/components/Terminal";
 
 const scrollToBottomOfContainer = () => {
   const terminalContainer = document.querySelector(".react-terminal");
-  console.log(terminalContainer?.scrollHeight, terminalContainer?.scrollTop);
   terminalContainer?.scrollTo(0, terminalContainer.scrollHeight);
 };
 

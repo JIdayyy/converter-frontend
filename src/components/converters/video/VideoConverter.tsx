@@ -48,7 +48,7 @@ export default function VideoConverterCard() {
     link.click();
     document.body.removeChild(link);
   };
-  console.log(fileName);
+
   return (
     <Card>
       <CardHeader>

@@ -1,14 +1,12 @@
-"use client";
-
 import "./globals.css";
-import { Inter as FontSans } from "next/font/google";
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers/theme.provider";
 import { Navbar } from "@/components/ui/navbar";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import { TerminalContextProvider } from "react-terminal";
+import { SessionProvider } from "next-auth/react";
+import Footer from "@/components/ui/footer";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -16,12 +14,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head />
       <body
         className={cn(
-          "min-h-screen bg-background antialiased",
+          "min-h-screen flex flex-col justify-between bg-background antialiased",
           GeistSans.className,
           GeistMono.className
         )}
       >
-        <TerminalContextProvider>
+        <SessionProvider>
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
@@ -31,8 +29,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <Navbar />
 
             {children}
+
+            <Footer />
           </ThemeProvider>
-        </TerminalContextProvider>
+        </SessionProvider>
       </body>
     </html>
   );

@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <main
       className={
-        "min-h-screen flex flex-col justify-center align-middle items-center"
+        "h-full flex flex-col justify-center align-middle items-center"
       }
     >
       <div className="h-[40rem] w-full  flex flex-col items-center justify-center overflow-hidden rounded-md">
