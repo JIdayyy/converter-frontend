@@ -6,7 +6,11 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main>
+    <main
+      className={
+        "min-h-screen flex flex-col justify-center align-middle items-center"
+      }
+    >
       <div className="h-[40rem] w-full  flex flex-col items-center justify-center overflow-hidden rounded-md">
         <h1 className="md:text-4xl max-w-2xl text-4xl lg:text-7xl font-bold text-center text-white relative z-20">
           Free Online Video Converter 📽️
