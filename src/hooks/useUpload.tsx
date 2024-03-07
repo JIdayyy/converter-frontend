@@ -7,6 +7,8 @@ type UseUploadState = {
   progress: number;
 };
 
+type TUploadParams = Record<string, any>;
+
 export default function useUpload() {
   const [state, setState] = useState<UseUploadState>({
     file: null,
@@ -31,7 +33,6 @@ export default function useUpload() {
     );
 
     xhr.upload.onprogress = (e) => {
-      console.log("onProgress", e);
       setState((state) => ({
         ...state,
         progress: Math.round((e.loaded / e.total) * 100),
