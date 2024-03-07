@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import useUpload from "@/hooks/useUpload";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 
 import {

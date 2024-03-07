@@ -23,7 +23,9 @@ let allTabs = [
 export const Navbar = () => {
   const tabsRef = useRef<(HTMLElement | null)[]>([]);
   const [activeTabIndex, setActiveTabIndex] = useState<number | null>(
-    allTabs.findIndex((tab) => tab.path === window.location.pathname)
+    typeof window !== "undefined"
+      ? allTabs.findIndex((tab) => tab.path === window?.location.pathname)
+      : null
   );
   const [tabUnderlineWidth, setTabUnderlineWidth] = useState(0);
   const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0);
