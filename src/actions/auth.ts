@@ -20,7 +20,7 @@ export const handleSignOut = async () => {
       method: "POST",
     }
   )
-    .then((res) => console.log("LOGOUT REQ"))
+    .then(() => console.log("LOGOUT REQ"))
     .catch((err) => console.log("LOGOUT ERR", err));
 
   await signOut();

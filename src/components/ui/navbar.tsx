@@ -75,7 +75,7 @@ export const Navbar = () => {
               return (
                 <Link
                   href={tab.path}
-                  key={index}
+                  key={tab.id}
                   ref={(el) => (tabsRef.current[index] = el)}
                   className={`${
                     isActive ? `font-bold` : `hover:text-neutral-300 font-light`

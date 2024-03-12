@@ -14,9 +14,14 @@ export default function Page() {
   const [terminalLineData, setTerminalLineData] = useState<string[]>([]);
 
   useEffect(() => {
-    const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL as string, {
+    const socket = io(process.env.NEXT_PUBLIC_API_URL as string, {
       port: 3004,
       secure: process.env.NODE_ENV === "production",
+      withCredentials: true,
+    });
+
+    socket.on("connect", () => {
+      console.log("Connected to the server", socket.id);
     });
 
     socket.on("conversion-event", (message: string) => {

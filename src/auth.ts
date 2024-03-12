@@ -33,7 +33,7 @@ export const {
   pages: {
     signIn: "/auth/signin",
   },
-  debug: false,
+  debug: true,
 
   jwt: {
     maxAge: 8 * 60, //
@@ -62,6 +62,7 @@ export const {
 
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
+      console.log("AUTH", auth);
       const isLoggedIn = auth?.user;
 
       if (nextUrl.pathname.startsWith("/auth") && isLoggedIn) {
@@ -71,6 +72,7 @@ export const {
     },
 
     session: async ({ session, token }) => {
+      console.log("SESSION", session, token);
       session.error = token?.error;
       return {
         ...session,

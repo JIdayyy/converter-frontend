@@ -8,7 +8,9 @@ import { GeistMono } from "geist/font/mono";
 import { SessionProvider } from "next-auth/react";
 import Footer from "@/components/ui/footer";
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
