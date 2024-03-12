@@ -7,6 +7,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { SessionProvider } from "next-auth/react";
 import Footer from "@/components/ui/footer";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function RootLayout({
   children,
@@ -21,6 +22,7 @@ export default function RootLayout({
           GeistMono.className
         )}
       >
+        <Analytics />
         <SessionProvider>
           <ThemeProvider
             attribute="class"
